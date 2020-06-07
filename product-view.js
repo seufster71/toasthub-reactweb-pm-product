@@ -8,8 +8,8 @@ import Select from '../../coreView/common/select-input';
 
 
 export default function PMProductView({containerState, itemState, appPrefs, onListLimitChange,
-	onSearchChange, onSearchClick, onPaginationClick, onOrderBy, openDeleteModal, 
-	closeModal, onModify, onDelete, onEditRoles, inputChange, session}) {
+	onSearchChange, onSearchClick, onPaginationClick, onOrderBy, onOption, 
+	closeModal, inputChange, session}) {
 
     let columns = [];
     if (itemState.prefLabels != null && itemState.prefLabels.PM_PRODUCT_PAGE != null) {
@@ -47,10 +47,7 @@ export default function PMProductView({containerState, itemState, appPrefs, onLi
 		  	      	onSearchClick={onSearchClick}
 		  	      	onPaginationClick={onPaginationClick}
 		  			onOrderBy={onOrderBy}
-	  				onHeader={onModify}
-	  				onOption1={onModify}
-	  				onOption2={openDeleteModal}
-	  				onOption3={onEditRoles}
+	  				onOption={onOption}
 		  			orderCriteria={itemState.orderCriteria}
 	  				searchCriteria={itemState.searchCriteria}
 		  	      />
@@ -70,15 +67,12 @@ export default function PMProductView({containerState, itemState, appPrefs, onLi
 	    			onSearchClick={onSearchClick}
 	    			onPaginationClick={onPaginationClick}
 	    			onOrderBy={onOrderBy}
-	    			onHeader={onModify}
-	    			onOption1={onModify}
-	    			onOption2={openDeleteModal}
-	    			onOption3={onEditRoles}
+	    			onOption={onOption}
 	    			orderCriteria={itemState.orderCriteria}
 					searchCriteria={itemState.searchCriteria}
 	    		/>
     		)}
-    		<Modal isOpen={containerState.isDeleteModalOpen} onClose={closeModal()} >
+    		<Modal isOpen={containerState.isDeleteModalOpen} onClose={() => closeModal()} >
     			<div className="modal-dialog">
     				<div className="modal-content">
     					<div className="modal-header">
@@ -89,8 +83,8 @@ export default function PMProductView({containerState, itemState, appPrefs, onLi
     						<h3>Are you sure you want to delete?</h3>
     					</div>
     					<div className="modal-footer">
-    						<button type="button" className="btn btn-primary" onClick={onDelete(containerState.selected)}>Delete</button>
-    						<button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={closeModal()}>Close</button>
+    						<button type="button" className="btn btn-primary" onClick={() => onOption("DELETEFINAL",containerState.selected)}>Delete</button>
+    						<button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={() => closeModal()}>Close</button>
     					</div>
     				</div>
     			</div>
@@ -109,11 +103,8 @@ PMProductView.propTypes = {
   onSearchClick: PropTypes.func,
   onPaginationClick: PropTypes.func,
   onOrderBy: PropTypes.func, 
-  openDeleteModal: PropTypes.func,
   closeModal: PropTypes.func,
-  onModify: PropTypes.func,
-  onDelete: PropTypes.func,
-  onEditRoles: PropTypes.func,
+  onOption: PropTypes.func,
   inputChange: PropTypes.func,
   session: PropTypes.object
 };
