@@ -18,6 +18,7 @@ export default function PMProductModifyView({containerState, item, inputFields, 
 PMProductModifyView.propTypes = {
   containerState: PropTypes.object,
   item: PropTypes.object,
+  inputFields: PropTypes.object,
   appPrefs: PropTypes.object.isRequired,
   itemPrefForms: PropTypes.object.isRequired,
   onSave: PropTypes.func,
