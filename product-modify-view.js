@@ -2,25 +2,23 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import FormBuilder from '../../coreView/common/form-builder';
 
-export default function PMProductModifyView({containerState, item, inputFields, appPrefs, 
-	itemPrefForms, onSave, onCancel, inputChange, onBlur}) {
+export default function PMProductModifyView({itemState, appPrefs, 
+	onSave, onCancel, inputChange, onBlur}) {
 
 	let formName = "PM_PRODUCT_FORM";
 	let formTitle = "Products";
 	let formGroup = "FORM1";
     
     return (
-    	<FormBuilder containerState={containerState} item={item} formName={formName} formTitle={formTitle} formGroup={formGroup} inputFields={inputFields} appPrefs={appPrefs} prefForms={itemPrefForms} onSave={onSave} onCancel={onCancel} inputChange={inputChange}/>
+    	<FormBuilder itemState={itemState} formName={formName} formTitle={formTitle} formGroup={formGroup}
+    	appPrefs={appPrefs} onSave={onSave} onCancel={onCancel} inputChange={inputChange}/>
     );
 }
 
 
 PMProductModifyView.propTypes = {
-  containerState: PropTypes.object,
-  item: PropTypes.object,
-  inputFields: PropTypes.object,
+  itemState: PropTypes.object.isRequired,
   appPrefs: PropTypes.object.isRequired,
-  itemPrefForms: PropTypes.object.isRequired,
   onSave: PropTypes.func,
   onCancel: PropTypes.func,
   inputChange: PropTypes.func,
