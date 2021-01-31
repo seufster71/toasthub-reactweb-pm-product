@@ -3,13 +3,11 @@ import PropTypes from 'prop-types';
 import Table from '../../coreView/common/table';
 import ListBuilder from '../../coreView/common/list-builder';
 import Modal from '../../coreView/common/modal';
-import Input from '../../coreView/common/text-input';
-import Select from '../../coreView/common/select-input';
 
 
 export default function PMProductView({itemState, appPrefs, onListLimitChange,
 	onSearchChange, onSearchClick, onPaginationClick, onOrderBy, onOption, 
-	closeModal, inputChange, session}) {
+	closeModal, session}) {
 
     let columns = [];
     if (itemState.prefLabels != null && itemState.prefLabels.PM_PRODUCT_PAGE != null) {
@@ -92,6 +90,5 @@ PMProductView.propTypes = {
   onOrderBy: PropTypes.func, 
   closeModal: PropTypes.func,
   onOption: PropTypes.func,
-  inputChange: PropTypes.func,
   session: PropTypes.object
 };
